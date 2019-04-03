@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Water
   - CameraEdge
+  - SkullStick
   layers:
   - Default
   - TransparentFX

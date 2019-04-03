@@ -16,6 +16,10 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     private float rotateSpeed = 0f;
+    [SerializeField]
+    private float rotateBorderStart = -5f;
+    [SerializeField]
+    private float rotateBorderEnd = -15f;
     private Quaternion startRotation;
     private bool isPlayerMoving = false;
 
@@ -39,18 +43,8 @@ public class CameraController : MonoBehaviour
 
         Vector3 direction = playerPos - lastPlayerPos;
         Vector3 localDirection = transform.InverseTransformDirection(direction);
-        Debug.Log(localDirection);
-
-        if (player.GetComponent<Rigidbody>().velocity.magnitude > 0)
-        {
-            isPlayerMoving = true;
-        }
-        else
-        {
-            isPlayerMoving = false;
-        }
-
-        if ((isPlayerMoving) && (playerController.isPlayerAtEdge))
+        
+        if ((playerController.isMoving) && (playerPos.x <= rotateBorderStart) && (playerPos.x >= rotateBorderEnd))
         {
             Rotate(playerPos, localDirection);
         }
@@ -60,25 +54,21 @@ public class CameraController : MonoBehaviour
 
     private void Rotate(Vector3 playerPos, Vector3 localDirection)
     {
-        if (localDirection.x < 0) //Moving left
+        if ((playerCamera.transform.position.y < 90) && (playerCamera.transform.position.y >= 0))
         {
-            offset = Quaternion.AngleAxis(rotateSpeed, Vector3.up) * offset;
-            transform.position = playerPos + offset;
-            transform.LookAt(playerPos);
-        }
-        else if (localDirection.x > 0) //Moving right
-        {
-            offset = Quaternion.AngleAxis(rotateSpeed, -Vector3.up) * offset;
-            transform.position = playerPos + offset;
-            transform.LookAt(playerPos);
-        }
-    }
+            if (localDirection.x < 0) //Moving left
+            {
+                offset = Quaternion.AngleAxis(rotateSpeed, Vector3.up) * offset;
+                transform.position = playerPos + offset;
+                transform.LookAt(playerPos);
+            }
+            else if (localDirection.x > 0) //Moving right
+            {
+                offset = Quaternion.AngleAxis(rotateSpeed, -Vector3.up) * offset;
+                transform.position = playerPos + offset;
+                transform.LookAt(playerPos);
+            }
 
-    public void ResetRotation()
-    {
-        Vector3 playerPos = player.transform.position;
-        offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance - 1));
-        transform.rotation = startRotation;
-        transform.LookAt(playerPos);
+        }
     }
 }
