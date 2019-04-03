@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
     
     private Rigidbody rigidBody;
     [SerializeField]
+    private Camera playerCamera;
+    private CameraController cameraController;
+    [SerializeField]
     private float speed = 5.0f;
     [SerializeField]
     private float sprintBoost = 0.5f;
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     void Start ()
     {
         rigidBody = GetComponent<Rigidbody>();
+        cameraController = playerCamera.GetComponent<CameraController>();
     }
 	
 	// Update is called once per frame
@@ -61,7 +65,6 @@ public class PlayerController : MonoBehaviour {
         if (other.tag == "CameraEdge")
         {
             isPlayerAtEdge = true;
-            Debug.Log("Player is in box");
         }
     }
 
@@ -70,7 +73,7 @@ public class PlayerController : MonoBehaviour {
         if (other.tag == "CameraEdge")
         {
             isPlayerAtEdge = false;
-            Debug.Log("Player is not in box");
+            //cameraController.ResetRotation();
         }
     }
 }

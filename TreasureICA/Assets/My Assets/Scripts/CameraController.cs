@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Vector3 offset;
+    private Vector3 lastPlayerPos;
 
     [SerializeField]
     private float cameraDistance;
@@ -14,18 +15,20 @@ public class CameraController : MonoBehaviour
     private PlayerController playerController;
 
     [SerializeField]
-    private float rotateSpeed = 0.5f;
-    //private bool isPlayerAtEdge = false;
+    private float rotateSpeed = 0f;
+    private Quaternion startRotation;
     private bool isPlayerMoving = false;
 
     void Start()
     {
-        playerController = 
+        playerController = player.GetComponent<PlayerController>();
         playerCamera = GetComponent<Camera>();
         Vector3 playerPos = player.transform.position;
         offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance - 1));
         playerCamera.transform.position = playerPos + offset;
-        transform.LookAt(playerPos);        
+        transform.LookAt(playerPos);
+
+        startRotation = playerCamera.transform.rotation;
     }
 
     // Update is called once per frame
@@ -34,12 +37,9 @@ public class CameraController : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         playerCamera.transform.position = playerPos + offset;
 
-        //if (playerPos.x <= -10) //TO DO: INCREMENT AS PLAYER MOVES NOT CONTINOUSLY
-        //{
-        //    offset = Quaternion.AngleAxis(rotateSpeed, Vector3.up) * offset;
-        //    transform.position = playerPos + offset;
-        //    transform.LookAt(playerPos);
-        //}
+        Vector3 direction = playerPos - lastPlayerPos;
+        Vector3 localDirection = transform.InverseTransformDirection(direction);
+        Debug.Log(localDirection);
 
         if (player.GetComponent<Rigidbody>().velocity.magnitude > 0)
         {
@@ -52,34 +52,33 @@ public class CameraController : MonoBehaviour
 
         if ((isPlayerMoving) && (playerController.isPlayerAtEdge))
         {
-            Rotate(playerPos);
+            Rotate(playerPos, localDirection);
+        }
+
+        lastPlayerPos = playerPos;
+    }
+
+    private void Rotate(Vector3 playerPos, Vector3 localDirection)
+    {
+        if (localDirection.x < 0) //Moving left
+        {
+            offset = Quaternion.AngleAxis(rotateSpeed, Vector3.up) * offset;
+            transform.position = playerPos + offset;
+            transform.LookAt(playerPos);
+        }
+        else if (localDirection.x > 0) //Moving right
+        {
+            offset = Quaternion.AngleAxis(rotateSpeed, -Vector3.up) * offset;
+            transform.position = playerPos + offset;
+            transform.LookAt(playerPos);
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "CameraEdge")
-    //    {
-    //        isPlayerAtEdge = true;
-
-    //        Debug.Log("Player is in box");
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "CameraEdge")
-    //    {
-    //        isPlayerAtEdge = false;
-
-    //        Debug.Log("Player is not in box");
-    //    }
-    //}
-
-    private void Rotate(Vector3 playerPos)
+    public void ResetRotation()
     {
-        offset = Quaternion.AngleAxis(rotateSpeed, Vector3.up) * offset;
-        transform.position = playerPos + offset;
+        Vector3 playerPos = player.transform.position;
+        offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance - 1));
+        transform.rotation = startRotation;
         transform.LookAt(playerPos);
     }
 }

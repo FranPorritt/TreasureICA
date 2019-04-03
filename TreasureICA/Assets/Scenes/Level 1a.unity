@@ -524,6 +524,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6b7fb383a3534b039692b5485b6e739, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &518428562 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114603651347194614, guid: c6d9df69d3f44044c8b024659a31b9ec,
+    type: 2}
+  m_PrefabInternal: {fileID: 1537583029}
+  m_Script: {fileID: 11500000, guid: 75079dc9c9603364e9aaebe902e40414, type: 3}
+--- !u!20 &518428565 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20606376489139474, guid: c6d9df69d3f44044c8b024659a31b9ec,
+    type: 2}
+  m_PrefabInternal: {fileID: 1537583029}
 --- !u!1 &542832923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1135,21 @@ Prefab:
     - target: {fileID: 4633048968174544, guid: c6d9df69d3f44044c8b024659a31b9ec, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276942908060962, guid: c6d9df69d3f44044c8b024659a31b9ec,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 518428565}
+    - target: {fileID: 114276942908060962, guid: c6d9df69d3f44044c8b024659a31b9ec,
+        type: 2}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 518428562}
+    - target: {fileID: 114603651347194614, guid: c6d9df69d3f44044c8b024659a31b9ec,
+        type: 2}
+      propertyPath: rotateSpeed
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6d9df69d3f44044c8b024659a31b9ec, type: 2}
