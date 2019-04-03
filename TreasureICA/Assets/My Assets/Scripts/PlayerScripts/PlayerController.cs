@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
+    
     private Rigidbody rigidBody;
     [SerializeField]
     private float speed = 5.0f;
@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour {
     private float sprintBoost = 0.5f;
     [SerializeField]
     private float jumpForce = 100.0f;
+    
     public bool isGrounded = true;
+    public bool isPlayerAtEdge = false;
 
     void Start ()
     {
@@ -52,5 +54,23 @@ public class PlayerController : MonoBehaviour {
     void Jump()
     {
         rigidBody.AddForce(transform.up * jumpForce, ForceMode.Acceleration);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "CameraEdge")
+        {
+            isPlayerAtEdge = true;
+            Debug.Log("Player is in box");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "CameraEdge")
+        {
+            isPlayerAtEdge = false;
+            Debug.Log("Player is not in box");
+        }
     }
 }

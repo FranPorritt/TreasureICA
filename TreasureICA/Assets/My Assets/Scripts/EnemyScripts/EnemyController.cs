@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour {
         Attacking,
     };
 
+    private State m_CurrentState;
+
     [SerializeField]
     private NavMeshAgent agent;
     private GameObject enemy;
