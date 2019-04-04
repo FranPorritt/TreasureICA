@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public bool isPlayerAtEdge = false;
     private Vector3 lastMovement;
     public bool isMoving = false;
+
+    private bool isSkull = false;
 
     void Start()
     {
@@ -70,6 +73,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             isMoving = false;
+        }
+
+        if (isSkull)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                Debug.Log("Loading scene");
+                //SceneManager.LoadScene("Level 1b");
+            }
         }
     }
 
@@ -119,10 +131,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "SkullStick")
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                // Load level 1b
-            }
+            Debug.Log("Press ENTER to continue");
+            isSkull = true;
+            Debug.Log(isSkull);
+            //if (Input.GetKey(KeyCode.KeypadEnter))
+            //{
+            //    //Load level 1b
+            //    Debug.Log("Loading scene");
+            //    SceneManager.LoadScene("Level 1b");
+            //}
         }
     }
 
@@ -132,6 +149,12 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerAtEdge = false;
             //cameraController.ResetRotation();
+        }
+
+        if (other.tag == "SkullStick")
+        {
+            isSkull = false;
+            Debug.Log(isSkull);
         }
     }
 
