@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
+    private int currentLevel;
     private Vector3 offset;
     private Vector3 lastPlayerPos;
 
@@ -25,6 +27,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
         playerController = player.GetComponent<PlayerController>();
         playerCamera = GetComponent<Camera>();
         Vector3 playerPos = player.transform.position;

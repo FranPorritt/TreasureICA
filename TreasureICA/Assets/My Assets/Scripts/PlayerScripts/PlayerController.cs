@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     State currentState;
 
+    private int currentScene;
+
     private Rigidbody rigidBody;
     [SerializeField]
     private Camera playerCamera;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        currentScene = SceneManager.GetActiveScene().buildIndex;
         rigidBody = GetComponent<Rigidbody>();
         cameraController = playerCamera.GetComponent<CameraController>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
@@ -80,7 +83,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 Debug.Log("Loading scene");
-                //SceneManager.LoadScene("Level 1b");
+                SceneManager.LoadScene(currentScene + 1);
             }
         }
     }
@@ -131,15 +134,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "SkullStick")
         {
-            Debug.Log("Press ENTER to continue");
             isSkull = true;
-            Debug.Log(isSkull);
-            //if (Input.GetKey(KeyCode.KeypadEnter))
-            //{
-            //    //Load level 1b
-            //    Debug.Log("Loading scene");
-            //    SceneManager.LoadScene("Level 1b");
-            //}
+            Debug.Log("Press E to continue forward!");
         }
     }
 
@@ -148,13 +144,11 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "CameraEdge")
         {
             isPlayerAtEdge = false;
-            //cameraController.ResetRotation();
         }
 
         if (other.tag == "SkullStick")
         {
             isSkull = false;
-            Debug.Log(isSkull);
         }
     }
 
