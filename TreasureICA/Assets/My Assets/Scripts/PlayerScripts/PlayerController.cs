@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Camera playerCamera;
     private CameraController cameraController;
     private PlayerRotation playerRotation;
+    private Animator animator;
 
     // Movement
     Vector3 movement;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         cameraController = playerCamera.GetComponent<CameraController>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
+        animator = GetComponent<Animator>();
         currentState = State.Idle;
     }
 
@@ -76,6 +78,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             isMoving = false;
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("ATTACK");
+            //animator.Play("playerSword");
         }
 
         if (isSkull)

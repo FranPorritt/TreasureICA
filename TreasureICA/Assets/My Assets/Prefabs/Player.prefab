@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114276942908060962}
   m_Layer: 0
   m_Name: PlayerObj
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4847239592403612}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114603651347194614}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1547036520616482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.94, y: 4.38, z: -11.91}
+  m_LocalPosition: {x: 0, y: 1.36, z: -11.75}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4633048968174544}
@@ -132,8 +132,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200040302416126}
   m_LocalRotation: {x: 0.9745047, y: 0.012139562, z: -0.054434925, w: 0.21732484}
-  m_LocalPosition: {x: 0.555, y: -0.09000003, z: 0.21444201}
-  m_LocalScale: {x: 0.9675188, y: 1.4173568, z: 1.4682994}
+  m_LocalPosition: {x: 0.54884, y: -0.12225, z: 0.15943}
+  m_LocalScale: {x: 1.1980634, y: 1.7550913, z: 1.8181727}
   m_Children: []
   m_Father: {fileID: 4459439011009712}
   m_RootOrder: 0
@@ -287,7 +287,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 0}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 5a8932b6b9cbad0478782e56d6773096, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
