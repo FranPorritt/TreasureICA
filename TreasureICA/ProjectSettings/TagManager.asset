@@ -8,6 +8,7 @@ TagManager:
   - CameraEdge
   - SkullStick
   - PlayerAttack
+  - Enemy
   layers:
   - Default
   - TransparentFX

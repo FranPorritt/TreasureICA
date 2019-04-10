@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{
     private enum State
     {
         Wandering,
@@ -16,37 +17,85 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     private NavMeshAgent agent;
     private GameObject enemy;
+    [SerializeField]
+    private Transform Player;
 
-    private float m_MapExtentX = 50.0f;
-    private float m_MapExtentZ = 50.0f;
+    private float m_MapExtentX = 100.0f;
+    private float m_MapExtentZ = 30.0f;
 
     private Transform startTransform;
+    private Vector3 enemyPos;
 
     private EnemyHealth enemyHealth;
     private PlayerAttack playerAttack;
 
     private bool isInAttackRange = false;
 
-    void Start ()
+    void Start()
     {
         enemy = GetComponent<GameObject>();
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
+        m_CurrentState = State.Wandering;
         RandomPosition();
     }
-	
-	void Update ()
+
+    void Update()
+    {
+        // Player Attack
+        if ((Input.GetMouseButtonDown(0)) && (isInAttackRange))
+        {
+            enemyHealth.enemyHealth -= 25.0f;
+        }
+
+        if (Vector3.Distance(Player.position, this.transform.position) < 30.0f)
+        {
+            m_CurrentState = State.Chasing;
+        }
+        else
+        {
+            m_CurrentState = State.Wandering;
+        }
+
+        switch (m_CurrentState)
+        {
+            case State.Wandering:
+                {
+                    Wandering();
+                    break;
+                }
+
+            case State.Chasing:
+                {
+                    Chasing();
+                    break;
+                }
+
+            case State.Attacking:
+                {
+                    break;
+                }
+
+            default:
+                {
+                    break;
+                }
+        }
+    }
+
+    private void Wandering()
     {
         if (agent.remainingDistance < 2.0f)
         {
             RandomPosition();
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("hit");
-            enemyHealth.enemyHealth -= 10;
-        }
+    }
+    private void Chasing()
+    {
+        Vector3 PlayerPos = Player.position;
+        Vector3 direction = Player.position - this.transform.position;
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
+        agent.destination = PlayerPos;
     }
 
     private void RandomPosition()

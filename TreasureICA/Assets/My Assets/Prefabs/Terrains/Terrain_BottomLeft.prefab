@@ -26,8 +26,8 @@ GameObject:
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1101592719863674
 GameObject:
@@ -129,8 +129,8 @@ GameObject:
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1842960635585608
 GameObject:
@@ -147,8 +147,8 @@ GameObject:
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1870960009008608
 GameObject:
@@ -165,8 +165,8 @@ GameObject:
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4007996273592106
 Transform:
@@ -190,8 +190,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527537504737454}
-  m_LocalRotation: {x: 0.37470332, y: 0.05919134, z: 0.023978846, w: -0.9249426}
-  m_LocalPosition: {x: 133.04686, y: -121.09938, z: -60.69226}
+  m_LocalRotation: {x: -0.21641417, y: 0.12265308, z: 0.027418079, w: 0.9681784}
+  m_LocalPosition: {x: 57.680504, y: -24.008503, z: 16.284828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4007996273592106}
@@ -229,8 +229,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101592719863674}
-  m_LocalRotation: {x: -0.054324105, y: 0.7826949, z: 0.06902199, w: 0.6161766}
-  m_LocalPosition: {x: 45.22497, y: -0.64305115, z: 39.646004}
+  m_LocalRotation: {x: 0.23204096, y: 0.6252067, z: 0.2022787, w: -0.71718687}
+  m_LocalPosition: {x: 52.6801, y: -1.6787653, z: 38.56028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4007996273592106}

@@ -31,8 +31,8 @@ public class CameraController : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         playerCamera = GetComponent<Camera>();
         Vector3 playerPos = player.transform.position;
-        offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance - 1));
-        playerCamera.transform.position = playerPos + offset;
+        offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance + 1));
+        playerCamera.transform.position = offset;
         transform.LookAt(playerPos);
 
         startRotation = playerCamera.transform.rotation;
@@ -42,17 +42,18 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector3 playerPos = player.transform.position;
-        playerCamera.transform.position = playerPos + offset;
+        offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance + 1));
+        playerCamera.transform.position = offset;
 
-        Vector3 direction = playerPos - lastPlayerPos;
-        Vector3 localDirection = transform.InverseTransformDirection(direction);
-        
-        if ((playerController.isMoving) && (playerPos.x <= rotateBorderStart) && (playerPos.x >= rotateBorderEnd))
-        {
-            Rotate(playerPos, localDirection);
-        }
+        //Vector3 direction = playerPos - lastPlayerPos;
+        //Vector3 localDirection = transform.InverseTransformDirection(direction);
 
-        lastPlayerPos = playerPos;
+        //if ((playerController.isMoving) && (playerPos.x <= rotateBorderStart) && (playerPos.x >= rotateBorderEnd))
+        //{
+        //    Rotate(playerPos, localDirection);
+        //}
+
+        //lastPlayerPos = playerPos;
     }
 
     private void Rotate(Vector3 playerPos, Vector3 localDirection)

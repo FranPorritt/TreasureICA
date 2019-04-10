@@ -20,14 +20,15 @@ public class PlayerController : MonoBehaviour
     private Camera playerCamera;
     private CameraController cameraController;
     private PlayerRotation playerRotation;
+    private PlayerHealth playerHealth;
     private Animator animator;
 
     // Movement
     Vector3 movement;
     [SerializeField]
-    private float speed = 5.0f;
+    private float speed = 0f;
     [SerializeField]
-    private float sprintBoost = 0.5f;
+    private float sprintBoost = 0f;
     [SerializeField]
     private float jumpForce = 100.0f;
     public bool isGrounded = true;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         cameraController = playerCamera.GetComponent<CameraController>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
+        playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponent<Animator>();
         currentState = State.Idle;
     }
@@ -53,18 +55,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
-
-        //if (Input.GetKey(KeyCode.LeftShift))
-        //{
-        //    Debug.Log("Sprint");
-
-        //    moveVertical *= Time.deltaTime + sprintBoost;
-        //    moveHorizontal *= Time.deltaTime + sprintBoost;
-
-        //    movement = new Vector3(moveHorizontal, 0, moveVertical);
-
-        //    transform.Translate(movement);
-        //}
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -102,14 +92,22 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            float moveVertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            float moveVertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;            
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                moveVertical += sprintBoost;
+            }
             transform.Translate(0, 0, moveVertical);
             currentState = State.Moving;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             float moveVertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-            transform.Translate(0, 0, -moveVertical);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                moveVertical += sprintBoost;
+            }
+            transform.Translate(0, 0, moveVertical);
             currentState = State.Moving;
         }
         else
@@ -144,6 +142,11 @@ public class PlayerController : MonoBehaviour
         {
             isSkull = true;
             Debug.Log("Press E to continue forward!");
+        }
+
+        if (other.tag == "Enemy")
+        {
+            playerHealth.playerHealth -= 10.0f;
         }
     }
 
