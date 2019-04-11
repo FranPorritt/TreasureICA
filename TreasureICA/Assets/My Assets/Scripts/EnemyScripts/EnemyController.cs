@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour
         Vector3 PlayerPos = Player.position;
         Vector3 direction = Player.position - this.transform.position;
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), 0.1f);
-        agent.destination = PlayerPos;
+        agent.SetDestination(PlayerPos);
     }
 
     private void RandomPosition()
