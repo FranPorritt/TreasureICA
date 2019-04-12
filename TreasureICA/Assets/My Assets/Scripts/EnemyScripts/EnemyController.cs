@@ -25,9 +25,10 @@ public class EnemyController : MonoBehaviour
 
     private Transform startTransform;
     private Vector3 enemyPos;
+    [SerializeField]
+    private float knockBackDistance = 2.0f;
 
     private EnemyHealth enemyHealth;
-    private PlayerAttack playerAttack;
 
     private bool isInAttackRange = false;
 
@@ -42,13 +43,16 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        float distance = Vector3.Distance(Player.position, this.transform.position);
+
         // Player Attack
         if ((Input.GetMouseButtonDown(0)) && (isInAttackRange))
         {
             enemyHealth.enemyHealth -= 25.0f;
+            KnockBack();
         }
 
-        if (Vector3.Distance(Player.position, this.transform.position) < 30.0f)
+        if (distance < 30.0f)
         {
             m_CurrentState = State.Chasing;
         }
@@ -102,6 +106,11 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 randomPosition = new Vector3(Random.Range(-m_MapExtentX, m_MapExtentX), Random.Range(0f, 0f), Random.Range(-m_MapExtentZ, m_MapExtentZ));
         agent.SetDestination(randomPosition);
+    }
+
+    private void KnockBack()
+    {
+        agent.velocity = -agent.velocity;
     }
 
     private void OnTriggerEnter(Collider other)

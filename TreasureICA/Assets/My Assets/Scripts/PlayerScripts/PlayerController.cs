@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
     private CameraController cameraController;
     private PlayerRotation playerRotation;
     private PlayerHealth playerHealth;
+    [SerializeField]
     private Animator animator;
+    private Vector3 playerPos;
 
     // Movement
     Vector3 movement;
@@ -47,7 +49,6 @@ public class PlayerController : MonoBehaviour
         cameraController = playerCamera.GetComponent<CameraController>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
         playerHealth = GetComponent<PlayerHealth>();
-        animator = GetComponent<Animator>();
         currentState = State.Idle;
     }
 
@@ -73,7 +74,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("ATTACK");
-            //animator.Play("playerSword");
+            animator.SetBool("isAttacking", true);
+            animator.Play("playerSword");
+            animator.SetBool("isAttacking", false);
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
         }
 
         if (isSkull)
@@ -92,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            float moveVertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;            
+            float moveVertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 moveVertical += sprintBoost;
@@ -146,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Enemy")
         {
-            playerHealth.playerHealth -= 10.0f;
+            playerHealth.playerHealth -= 5.0f;
         }
     }
 

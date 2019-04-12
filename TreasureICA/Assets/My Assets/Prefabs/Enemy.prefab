@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 195268156122119704}
   - component: {fileID: 114958660441890444}
   - component: {fileID: 114071635156152608}
+  - component: {fileID: 65456433804513212}
   m_Layer: 0
   m_Name: EnemyObj
   m_TagString: Enemy
@@ -320,6 +321,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891916784867570}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65456433804513212
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674941713557744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0.51}
 --- !u!65 &65517937433903594
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -407,7 +420,7 @@ NavMeshAgent:
   m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
