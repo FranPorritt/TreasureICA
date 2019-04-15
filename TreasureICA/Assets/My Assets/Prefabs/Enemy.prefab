@@ -150,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325797483687360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -61.37974, y: -14.36745, z: -27.06315}
+  m_LocalPosition: {x: 8.053673, y: 8.60674, z: -0.56277657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4126313772040388}
@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 195268156122119704}
   Player: {fileID: 0}
+  knockBackDistance: 2
 --- !u!135 &135391810928262236
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     private Transform Player;
 
     private float m_MapExtentX = 100.0f;
-    private float m_MapExtentZ = 30.0f;
+    private float m_MapExtentZ = 50.0f;
 
     private Transform startTransform;
     private Vector3 enemyPos;

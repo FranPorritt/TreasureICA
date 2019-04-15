@@ -23,8 +23,7 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField]
     private Animator animator;
-    private Vector3 playerPos;
-
+    
     // Movement
     Vector3 movement;
     [SerializeField]
@@ -40,7 +39,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastMovement;
     public bool isMoving = false;
 
-    private bool isSkull = false;
+    [SerializeField]
+    private GameObject skullStick;
+    private SkullLevelChange skullStickScript;
+
+    private LanternPickUp lantern;
+    [SerializeField]
+    private GameObject Lantern;
+    private bool inLanternRange = false;
 
     void Start()
     {
@@ -49,6 +55,8 @@ public class PlayerController : MonoBehaviour
         cameraController = playerCamera.GetComponent<CameraController>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
         playerHealth = GetComponent<PlayerHealth>();
+        skullStickScript = skullStick.GetComponent<SkullLevelChange>();
+        Lantern.SetActive(false);
         currentState = State.Idle;
     }
 
@@ -60,6 +68,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+        }
+
+        if (inLanternRange)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                LanternPickUp();
+            }
         }
 
         if (currentState == State.Moving)
@@ -81,15 +97,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isAttacking", false);
-        }
-
-        if (isSkull)
-        {
-            if (Input.GetKey(KeyCode.E))
-            {
-                Debug.Log("Loading scene");
-                SceneManager.LoadScene(currentScene + 1);
-            }
         }
     }
 
@@ -147,13 +154,24 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "SkullStick")
         {
-            isSkull = true;
-            Debug.Log("Press E to continue forward!");
+            skullStickScript.isSkullActive = true;
         }
 
         if (other.tag == "Enemy")
         {
             playerHealth.playerHealth -= 5.0f;
+        }
+
+        if (other.tag == "Stairs")
+        {
+            cameraController.isPlayerOnStairs = true;
+        }
+
+        if (other.tag == "LanternPickUp")
+        {           
+            lantern = other.GetComponent<LanternPickUp>();
+            lantern.isInRange = true;
+            inLanternRange = true;
         }
     }
 
@@ -166,8 +184,26 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "SkullStick")
         {
-            isSkull = false;
+            skullStickScript.isSkullActive = false;
         }
+
+        if (other.tag == "Stairs")
+        {
+            cameraController.isPlayerOnStairs = false;
+        }
+
+        if (other.tag == "LanternPickUp")
+        {
+            lantern = other.GetComponent<LanternPickUp>();
+            lantern.isInRange = false;
+            inLanternRange = false;
+        }
+    }
+
+    void LanternPickUp()
+    {        
+        lantern.isPickedUp = true;
+        Lantern.SetActive(true);
     }
 
     public Vector3 GetMovement()

@@ -9,6 +9,8 @@ TagManager:
   - SkullStick
   - PlayerAttack
   - Enemy
+  - Stairs
+  - LanternPickUp
   layers:
   - Default
   - TransparentFX

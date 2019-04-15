@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 {
     private Vector3 offset;
     private Vector3 lastPlayerPos;
+    private Vector3 lastCameraPos;
 
     [SerializeField]
     private float cameraDistance;
@@ -23,6 +24,7 @@ public class CameraController : MonoBehaviour
     private float rotateBorderEnd = -15f;
     private Quaternion startRotation;
     private bool isPlayerMoving = false;
+    public bool isPlayerOnStairs = false;
 
     void Start()
     {
@@ -38,13 +40,21 @@ public class CameraController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Vector3 playerPos = player.transform.position;
-        offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance + 1));
-        playerCamera.transform.position = offset;
-
+    {    
         //Vector3 direction = playerPos - lastPlayerPos;
         //Vector3 localDirection = transform.InverseTransformDirection(direction);
+
+        if (isPlayerOnStairs)
+        {
+            StairsRotate();
+        }
+        else
+        {
+            Vector3 playerPos = player.transform.position;
+            offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance + 1));
+            playerCamera.transform.position = offset;
+            transform.LookAt(playerPos);
+        }
 
         //if ((playerController.isMoving) && (playerPos.x <= rotateBorderStart) && (playerPos.x >= rotateBorderEnd))
         //{
@@ -52,6 +62,7 @@ public class CameraController : MonoBehaviour
         //}
 
         //lastPlayerPos = playerPos;
+        lastCameraPos = this.transform.position;
     }
 
     private void Rotate(Vector3 playerPos, Vector3 localDirection)
@@ -72,5 +83,13 @@ public class CameraController : MonoBehaviour
             }
 
         }
+    }
+
+    public void StairsRotate()
+    {
+        Vector3 playerPos = player.transform.position;
+        offset = new Vector3(playerPos.x - (cameraDistance + 1), playerPos.y + cameraDistance, playerPos.z);
+        transform.position = offset;
+        transform.LookAt(playerPos);
     }
 }
