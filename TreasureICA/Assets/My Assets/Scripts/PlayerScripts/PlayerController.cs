@@ -39,14 +39,23 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastMovement;
     public bool isMoving = false;
 
+    // Level Change
     [SerializeField]
     private GameObject skullStick;
     private SkullLevelChange skullStickScript;
 
+    // Lantern 
     private LanternPickUp lantern;
     [SerializeField]
     private GameObject Lantern;
     private bool inLanternRange = false;
+
+    // Lever + Bridge
+    [SerializeField]
+    private Lever lever;
+    public bool atLever = false;
+
+    public bool hasMap = false;
 
     void Start()
     {
@@ -75,6 +84,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 LanternPickUp();
+            }
+        }
+
+        if (atLever)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                lever.isLeverPulled = true;
             }
         }
 
@@ -147,52 +164,57 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "CameraEdge")
+        if (other.CompareTag("CameraEdge"))
         {
             isPlayerAtEdge = true;
         }
 
-        if (other.tag == "SkullStick")
+        if (other.CompareTag("SkullStick"))
         {
             skullStickScript.isSkullActive = true;
         }
 
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
-            playerHealth.playerHealth -= 5.0f;
+            playerHealth.takeDamage();
         }
 
-        if (other.tag == "Stairs")
+        if (other.CompareTag("Stairs"))
         {
             cameraController.isPlayerOnStairs = true;
         }
 
-        if (other.tag == "LanternPickUp")
+        if (other.CompareTag("LanternPickUp"))
         {           
             lantern = other.GetComponent<LanternPickUp>();
             lantern.isInRange = true;
             inLanternRange = true;
         }
+
+        if (other.CompareTag("Lever"))
+        {
+            atLever = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "CameraEdge")
+        if (other.CompareTag("CameraEdge"))
         {
             isPlayerAtEdge = false;
         }
 
-        if (other.tag == "SkullStick")
+        if (other.CompareTag("SkullStick"))
         {
             skullStickScript.isSkullActive = false;
         }
 
-        if (other.tag == "Stairs")
+        if (other.CompareTag("Stairs"))
         {
             cameraController.isPlayerOnStairs = false;
         }
 
-        if (other.tag == "LanternPickUp")
+        if (other.CompareTag("LanternPickUp"))
         {
             lantern = other.GetComponent<LanternPickUp>();
             lantern.isInRange = false;

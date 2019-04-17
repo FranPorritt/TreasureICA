@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Transform Player;
 
+    public float distance;
+
     private float m_MapExtentX = 100.0f;
     private float m_MapExtentZ = 50.0f;
 
@@ -43,12 +45,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(Player.position, this.transform.position);
+        distance = Vector3.Distance(Player.position, this.transform.position);
 
         // Player Attack
         if ((Input.GetMouseButtonDown(0)) && (isInAttackRange))
         {
-            enemyHealth.enemyHealth -= 25.0f;
+            enemyHealth.TakeDamage();
             KnockBack();
         }
 
@@ -108,7 +110,7 @@ public class EnemyController : MonoBehaviour
         agent.SetDestination(randomPosition);
     }
 
-    private void KnockBack()
+    public void KnockBack()
     {
         agent.velocity = -agent.velocity;
     }

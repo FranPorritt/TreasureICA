@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SkullLevelChange : MonoBehaviour
 {
-
     public bool isSkullActive = false;
     private int currentScene;
+    [SerializeField]
+    private LevelChanger levelChanger;
 
     [SerializeField]
     private GameObject SkullTextPrefab;
@@ -29,15 +30,9 @@ public class SkullLevelChange : MonoBehaviour
         {
             SkullTextPrefab.SetActive(true);
 
-            //if ((SkullTextPrefab) && (!isTextActive))
-            //{
-            //    ShowSkullText();
-            //}
-
             if (Input.GetKey(KeyCode.E))
             {
-                // WHAT IF PLAYER FALLS TO LOWER LEVEL AND/OR GOES BACK TO LAST AREA
-                SceneManager.LoadScene(currentScene + 1);
+                levelChanger.FadeToLevel();
             }
         }
         else
@@ -45,26 +40,4 @@ public class SkullLevelChange : MonoBehaviour
             SkullTextPrefab.SetActive(false);
         }
     }
-
-    //private void ShowSkullText()
-    //{
-    //    Instantiate(SkullTextPrefab, skullStickPos, Quaternion.identity, transform);
-    //    isTextActive = true;
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-    //        isSkullActive = true;
-    //        Debug.Log("Press E to continue forward!");
-    //    }        
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-    //        isSkullActive = false;
-    //    }
-    //}
 }

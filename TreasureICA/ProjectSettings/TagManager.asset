@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Stairs
   - LanternPickUp
+  - Lever
+  - PickUp
   layers:
   - Default
   - TransparentFX
