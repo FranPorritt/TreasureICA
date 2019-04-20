@@ -504,6 +504,11 @@ Prefab:
       propertyPath: m_Name
       value: InventorySlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
   m_IsPrefabParent: 0
@@ -731,31 +736,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -16.164398
+      value: -82.10229
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.004497162
+      value: 0.41585353
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.0032936283
+      value: 0.2109168
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.000015259513
+      value: 0.0997855
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9999845
+      value: -0.8789897
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -53.92903
+      value: -18.501404
       objectReference: {fileID: 0}
     - target: {fileID: 4103987307116444, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 45.644756
+      value: 6.5609436
       objectReference: {fileID: 0}
     - target: {fileID: 1391612684994370, guid: 1c2ca8bba4aad104a99fba8e91bfdd50, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -1002,6 +1007,11 @@ Prefab:
     - target: {fileID: 1438779010591584, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
       propertyPath: m_Name
       value: InventorySlot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
@@ -1707,6 +1717,11 @@ Prefab:
       propertyPath: m_Name
       value: InventorySlot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
   m_IsPrefabParent: 0
@@ -2051,31 +2066,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.051599585
+      value: 0.41585353
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.1820177
+      value: 0.2109168
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.009564773
+      value: 0.0997855
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.9818939
+      value: -0.8789897
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -14.968911
+      value: -82.10229
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 78.5139
+      value: 6.5609436
       objectReference: {fileID: 0}
     - target: {fileID: 4322798689216486, guid: 814dff37336572f4d862a8acef931019, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 37.35862
+      value: 81.4986
       objectReference: {fileID: 0}
     - target: {fileID: 20143315434123504, guid: 814dff37336572f4d862a8acef931019,
         type: 2}
@@ -2662,6 +2677,11 @@ Prefab:
       propertyPath: m_Name
       value: Apple - Health (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236764949947380, guid: 321add422561a1045822a16981f5acad,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 189471324}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 321add422561a1045822a16981f5acad, type: 2}
   m_IsPrefabParent: 0
@@ -2820,6 +2840,11 @@ Prefab:
     - target: {fileID: 1438779010591584, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
       propertyPath: m_Name
       value: InventorySlot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
@@ -3205,6 +3230,11 @@ Prefab:
       propertyPath: m_Name
       value: InventorySlot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
   m_IsPrefabParent: 0
@@ -3562,6 +3592,11 @@ Prefab:
       propertyPath: m_Name
       value: InventorySlot (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
   m_IsPrefabParent: 0
@@ -3899,6 +3934,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114236764949947380, guid: 321add422561a1045822a16981f5acad,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 189471324}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 321add422561a1045822a16981f5acad, type: 2}
   m_IsPrefabParent: 0
@@ -3945,6 +3985,11 @@ Prefab:
       propertyPath: m_Name
       value: Apple - Health (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236764949947380, guid: 321add422561a1045822a16981f5acad,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 189471324}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 321add422561a1045822a16981f5acad, type: 2}
   m_IsPrefabParent: 0
@@ -4142,6 +4187,11 @@ Prefab:
       propertyPath: m_Name
       value: Apple - Health(5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236764949947380, guid: 321add422561a1045822a16981f5acad,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 189471324}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 321add422561a1045822a16981f5acad, type: 2}
   m_IsPrefabParent: 0
@@ -4338,6 +4388,11 @@ Prefab:
       propertyPath: m_Name
       value: InventorySlot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114271008768038180, guid: f17c65a772531c4469b2b3186b5069bf,
+        type: 2}
+      propertyPath: i
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17c65a772531c4469b2b3186b5069bf, type: 2}
   m_IsPrefabParent: 0
@@ -4394,6 +4449,11 @@ Prefab:
       propertyPath: m_Name
       value: Apple - Health (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236764949947380, guid: 321add422561a1045822a16981f5acad,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 189471324}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 321add422561a1045822a16981f5acad, type: 2}
   m_IsPrefabParent: 0
@@ -4486,6 +4546,11 @@ Prefab:
       propertyPath: m_Name
       value: Apple - Health (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236764949947380, guid: 321add422561a1045822a16981f5acad,
+        type: 2}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 189471324}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 321add422561a1045822a16981f5acad, type: 2}
   m_IsPrefabParent: 0
@@ -4949,6 +5014,10 @@ Prefab:
         type: 2}
       propertyPath: enemyDamage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547036520616482, guid: c6d9df69d3f44044c8b024659a31b9ec, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6d9df69d3f44044c8b024659a31b9ec, type: 2}

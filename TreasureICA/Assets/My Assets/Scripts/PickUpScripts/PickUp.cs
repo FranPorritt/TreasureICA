@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
-
     private Inventory inventory;
     public GameObject itemButton;
 

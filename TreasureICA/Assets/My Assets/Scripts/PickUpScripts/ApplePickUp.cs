@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ApplePickUp : MonoBehaviour {
-
+    [SerializeField]
     private PlayerHealth playerHealth;
 
     private float increaseHealthAmount = 20.0f;
