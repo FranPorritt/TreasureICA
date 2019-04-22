@@ -18,11 +18,6 @@ public class PlayerHealth : MonoBehaviour {
     // Health Bar UI
     public Image healthHeart;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         healthHeart.fillAmount = playerHealth / maxHealth;
@@ -31,6 +26,11 @@ public class PlayerHealth : MonoBehaviour {
         {
             isDead = true;
             Debug.Log("Dead");
+        }
+
+        if (isDead)
+        {
+            healthHeart.enabled = false;
         }
     }
 

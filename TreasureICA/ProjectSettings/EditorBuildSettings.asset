@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 10845ccc9c92b4444aad83dd1829cf6b
+  - enabled: 1
     path: Assets/Scenes/Level 1 - Beach.unity
     guid: 40664ba8f3fd29b42ad72a6d20caf4f9
   - enabled: 1

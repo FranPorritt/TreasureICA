@@ -225,6 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f5d324e4027494baad720ce589295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkullActive: 0
+  levelChanger: {fileID: 0}
+  SkullTextPrefab: {fileID: 0}
 --- !u!135 &135547907585449074
 SphereCollider:
   m_ObjectHideFlags: 1

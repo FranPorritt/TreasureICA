@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     private GameObject enemy;
     [SerializeField]
     private Transform Player;
+    [SerializeField]
+    private GameController game;
 
     public float distance;
 
@@ -45,6 +47,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if(game.gameOver)
+        {
+            m_CurrentState = State.Wandering;
+        }
+
         distance = Vector3.Distance(Player.position, this.transform.position);
 
         // Player Attack

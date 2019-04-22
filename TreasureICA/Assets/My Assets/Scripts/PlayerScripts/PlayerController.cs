@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Camera playerCamera;
     private CameraController cameraController;
     private PlayerRotation playerRotation;
-    private PlayerHealth playerHealth;
+    public PlayerHealth playerHealth;
     [SerializeField]
     private Animator animator;
     
@@ -236,4 +236,6 @@ public class PlayerController : MonoBehaviour
     {
         return lastMovement;
     }
+
+   // onDest
 }

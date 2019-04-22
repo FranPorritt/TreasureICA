@@ -8,6 +8,9 @@ public class LevelChanger : MonoBehaviour {
     public Animator animator;
     private int currentScene;
 
+    [SerializeField]
+    private GameController game;
+
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -20,6 +23,17 @@ public class LevelChanger : MonoBehaviour {
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene(currentScene + 1);
+        if (game.returnMenu)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else if (game.isQuit)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
     }
 }

@@ -26,6 +26,8 @@ public class CameraController : MonoBehaviour
     private bool isPlayerMoving = false;
     public bool isPlayerOnStairs = false;
 
+    private bool cameraMoved = false;
+
     void Start()
     {
         playerController = player.GetComponent<PlayerController>();
@@ -40,29 +42,32 @@ public class CameraController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {    
-        //Vector3 direction = playerPos - lastPlayerPos;
-        //Vector3 localDirection = transform.InverseTransformDirection(direction);
-
-        if (isPlayerOnStairs)
+    {
+        if (!playerController.playerHealth.isDead)
         {
-            StairsRotate();
-        }
-        else
-        {
-            Vector3 playerPos = player.transform.position;
-            offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance + 1));
-            playerCamera.transform.position = offset;
-            transform.LookAt(playerPos);
-        }
+            //Vector3 direction = playerPos - lastPlayerPos;
+            //Vector3 localDirection = transform.InverseTransformDirection(direction);
 
-        //if ((playerController.isMoving) && (playerPos.x <= rotateBorderStart) && (playerPos.x >= rotateBorderEnd))
-        //{
-        //    Rotate(playerPos, localDirection);
-        //}
+            if (isPlayerOnStairs)
+            {
+                StairsRotate();
+            }
+            else
+            {
+                Vector3 playerPos = player.transform.position;
+                offset = new Vector3(playerPos.x, playerPos.y + cameraDistance, playerPos.z - (cameraDistance + 1));
+                playerCamera.transform.position = offset;
+                transform.LookAt(playerPos);
+            }
 
-        //lastPlayerPos = playerPos;
-        lastCameraPos = this.transform.position;
+            //if ((playerController.isMoving) && (playerPos.x <= rotateBorderStart) && (playerPos.x >= rotateBorderEnd))
+            //{
+            //    Rotate(playerPos, localDirection);
+            //}
+
+            //lastPlayerPos = playerPos;
+            lastCameraPos = this.transform.position;
+        }
     }
 
     private void Rotate(Vector3 playerPos, Vector3 localDirection)
@@ -91,5 +96,17 @@ public class CameraController : MonoBehaviour
         offset = new Vector3(playerPos.x - (cameraDistance + 1), playerPos.y + cameraDistance, playerPos.z);
         transform.position = offset;
         transform.LookAt(playerPos);
+    }
+
+    public void GameOver()
+    {
+        if (!cameraMoved)
+        {
+            Vector3 playerPos = player.transform.position;
+            Vector3 currentPos = transform.position;
+            transform.position = new Vector3(currentPos.x, currentPos.y + 20.0f, currentPos.z);
+            transform.LookAt(playerPos);
+            cameraMoved = true;
+        }
     }
 }
