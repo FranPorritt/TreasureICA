@@ -32,10 +32,11 @@ public class PickUp : MonoBehaviour
             {
                 for (int inventoryIndex = 0; inventoryIndex < inventory.inventorySlots.Length; inventoryIndex++)
                 {
-                    if (inventory.isFull[inventoryIndex] == false)
+                    if (!inventory.isFull[inventoryIndex])
                     {
                         inventory.isFull[inventoryIndex] = true;
                         Instantiate(itemButton, inventory.inventorySlots[inventoryIndex].transform, false);
+                        //PlayerPrefs.Set
                         Destroy(gameObject);
                         break;
                     }
