@@ -6,7 +6,7 @@ public class ApplePickUp : MonoBehaviour {
     [SerializeField]
     private PlayerHealth playerHealth;
 
-    private float increaseHealthAmount = 20.0f;
+    private int increaseHealthAmount = 20;
 
 	// Use this for initialization
 	void Start ()

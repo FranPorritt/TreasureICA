@@ -358,7 +358,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1547036520616482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.76, y: 8.24, z: -14.94}
+  m_LocalPosition: {x: -78.42, y: 0.55, z: 8.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4633048968174544}
@@ -756,6 +756,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 20606376489139474}
+  cameraController: {fileID: 114603651347194614}
+  playerRotation: {fileID: 0}
+  playerHealth: {fileID: 114796194150885970}
   animator: {fileID: 95158100972553616}
   speed: 8.5
   sprintBoost: 0.1
@@ -767,7 +770,8 @@ MonoBehaviour:
   Lantern: {fileID: 1783921640349608}
   lever: {fileID: 0}
   atLever: 0
-  hasMap: 0
+  playerHasMap: 0
+  playerHasKey: 0
 --- !u!114 &114603651347194614
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,8 +18,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidBody;
     [SerializeField]
     private Camera playerCamera;
+    [SerializeField]
     private CameraController cameraController;
-    private PlayerRotation playerRotation;
+    [SerializeField]
     public PlayerHealth playerHealth;
     [SerializeField]
     private Animator animator;
@@ -38,12 +39,7 @@ public class PlayerController : MonoBehaviour
     public bool isPlayerAtEdge = false;
     private Vector3 lastMovement;
     public bool isMoving = false;
-
-    // Level Change
-    [SerializeField]
-    private GameObject skullStick;
-    private SkullLevelChange skullStickScript;
-
+    
     // Lantern 
     private LanternPickUp lantern;
     [SerializeField]
@@ -55,16 +51,14 @@ public class PlayerController : MonoBehaviour
     private Lever lever;
     public bool atLever = false;
 
-    public bool hasMap = false;
+    // Map + Key Pick Up
+    public bool playerHasKey = false;
+    public bool playerHasMap = false;
 
     void Start()
-    {
+    { 
         currentScene = SceneManager.GetActiveScene().buildIndex;
         rigidBody = GetComponent<Rigidbody>();
-        cameraController = playerCamera.GetComponent<CameraController>();
-        playerRotation = GetComponentInChildren<PlayerRotation>();
-        playerHealth = GetComponent<PlayerHealth>();
-        skullStickScript = skullStick.GetComponent<SkullLevelChange>();
         Lantern.SetActive(false);
         currentState = State.Idle;
     }
@@ -106,7 +100,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("ATTACK");
             animator.SetBool("isAttacking", true);
             animator.Play("playerSword");
             animator.SetBool("isAttacking", false);
@@ -169,16 +162,6 @@ public class PlayerController : MonoBehaviour
             isPlayerAtEdge = true;
         }
 
-        if (other.CompareTag("SkullStick"))
-        {
-            skullStickScript.isSkullActive = true;
-        }
-
-        if (other.CompareTag("Enemy"))
-        {
-            playerHealth.takeDamage();
-        }
-
         if (other.CompareTag("Stairs"))
         {
             cameraController.isPlayerOnStairs = true;
@@ -202,11 +185,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("CameraEdge"))
         {
             isPlayerAtEdge = false;
-        }
-
-        if (other.CompareTag("SkullStick"))
-        {
-            skullStickScript.isSkullActive = false;
         }
 
         if (other.CompareTag("Stairs"))
@@ -236,6 +214,4 @@ public class PlayerController : MonoBehaviour
     {
         return lastMovement;
     }
-
-   // onDest
 }

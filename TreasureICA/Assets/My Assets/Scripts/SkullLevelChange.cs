@@ -12,8 +12,12 @@ public class SkullLevelChange : MonoBehaviour
 
     [SerializeField]
     private GameObject SkullTextPrefab;
+    [SerializeField]
+    private GameObject GetMapText;
     private Vector3 skullStickPos;
 
+    [SerializeField]
+    private PlayerController player;
     private bool isTextActive = false;
 
     private void Start()
@@ -28,16 +32,52 @@ public class SkullLevelChange : MonoBehaviour
     {
         if (isSkullActive)
         {
-            SkullTextPrefab.SetActive(true);
-
-            if (Input.GetKey(KeyCode.E))
+            if (SceneManager.GetActiveScene().name == "Level 1 - Beach")
             {
-                levelChanger.FadeToLevel();
+                if (player.playerHasMap)
+                {
+                    SkullTextPrefab.SetActive(true);
+
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        levelChanger.FadeToLevel();
+                    }
+                }
+                else
+                {
+                    GetMapText.SetActive(true);
+                }
+            }
+            else
+            {
+                SkullTextPrefab.SetActive(true);
+
+                if (Input.GetKey(KeyCode.E))
+                {
+                    levelChanger.FadeToLevel();
+                } 
             }
         }
         else
         {
             SkullTextPrefab.SetActive(false);
+            GetMapText.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isSkullActive = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isSkullActive = false;
         }
     }
 }

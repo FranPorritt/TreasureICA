@@ -7,16 +7,24 @@ public class PlayerHealth : MonoBehaviour {
 
     // When you load a new level need to get health value
     private float maxHealth = 100.0f;
-    [SerializeField]
     public float playerHealth = 100.0f;
 
     [SerializeField]
-    private float enemyDamage = 5.0f;
+    private int enemyDamage = 5;
 
     public bool isDead = false;
 
     // Health Bar UI
     public Image healthHeart;
+
+    private void Start()
+    {
+       //playerHealth = PlayerPrefs.GetFloat("Health", 100); // COMMENTED OUT WHILE TESTING -- ENABLE IT FOR PLAY
+       if (playerHealth <= 0)
+        {
+            playerHealth = 100; // If died and restarted
+        }
+    }
 
     void Update()
     {
@@ -32,10 +40,22 @@ public class PlayerHealth : MonoBehaviour {
         {
             healthHeart.enabled = false;
         }
+
+        // Stops health going above 100
+        if (playerHealth > maxHealth)
+        {
+            playerHealth = maxHealth;
+        }
     }
 
     public void takeDamage()
     {
         playerHealth -= enemyDamage;        
+    }
+
+    // Stores player data between levels
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetFloat("Health", playerHealth);
     }
 }

@@ -20,10 +20,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Transform Player;
     [SerializeField]
+    private PlayerHealth playerHealth;
+    [SerializeField]
     private GameController game;
 
     public float distance;
-
     private float m_MapExtentX = 100.0f;
     private float m_MapExtentZ = 50.0f;
 
@@ -33,13 +34,11 @@ public class EnemyController : MonoBehaviour
     private float knockBackDistance = 2.0f;
 
     private EnemyHealth enemyHealth;
-
     private bool isInAttackRange = false;
 
     void Start()
     {
         enemy = GetComponent<GameObject>();
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         m_CurrentState = State.Wandering;
         RandomPosition();
@@ -124,7 +123,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerAttack")
+        if (other.CompareTag("PlayerAttack"))
         {
             Debug.Log("in attack range");
             isInAttackRange = true;
@@ -133,9 +132,17 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "PlayerAttack")
+        if (other.CompareTag("PlayerAttack"))
         {
             isInAttackRange = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            playerHealth.takeDamage();
         }
     }
 }

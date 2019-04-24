@@ -25,7 +25,11 @@ public class LevelChanger : MonoBehaviour {
     {
         if (game.returnMenu)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Main Menu");
+        }
+        else if (game.restartLevel)
+        {
+            SceneManager.LoadScene("Level 2 - Cave");
         }
         else if (game.isQuit)
         {

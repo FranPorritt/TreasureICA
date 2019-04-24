@@ -13,6 +13,8 @@ TagManager:
   - LanternPickUp
   - Lever
   - PickUp
+  - Chest
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX

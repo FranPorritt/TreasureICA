@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 1647799434773088}
   m_LocalRotation: {x: -0, y: 0.20609358, z: -0, w: 0.97853225}
   m_LocalPosition: {x: 0, y: 2.9899998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 4675540228173062}
   m_RootOrder: 1
@@ -160,8 +160,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962341513188004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.09, y: 9.9, z: 79.57}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 142.09, y: 9.9, z: 79.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4269026644797450}
@@ -217,7 +217,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8050f06e1a3792649aeb54ac02f58fb2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -371,10 +371,10 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 150
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: 8050f06e1a3792649aeb54ac02f58fb2, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -392,7 +392,7 @@ MonoBehaviour:
   animator: {fileID: 95188564349472052}
   bridgeAnimator: {fileID: 0}
   isLeverPulled: 0
-  LeverTextPrefab: {fileID: 0}
+  LeverTextPrefab: {fileID: 1647799434773088}
   player: {fileID: 0}
 --- !u!135 &135483622123065240
 SphereCollider:

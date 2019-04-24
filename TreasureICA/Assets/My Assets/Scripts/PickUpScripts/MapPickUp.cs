@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class MapPickUp : MonoBehaviour
 {
+    private GameObject player;
     private PlayerController playerController;
 
     // Use this for initialization
     void Start()
     {
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        playerController.hasMap = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
+        playerController.playerHasMap = true;
     }
 }

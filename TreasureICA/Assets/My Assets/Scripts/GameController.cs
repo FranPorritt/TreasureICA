@@ -18,18 +18,18 @@ public class GameController : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField]
     private CameraController cameraController;
+    [SerializeField]
+    private LevelChanger levelChanger;
 
     [SerializeField]
     private GameObject gameOverUI;
     [SerializeField]
     private GameObject inventoryUI;
     [SerializeField]
-    private GameObject pauseUI;
-
-    [SerializeField]
-    private LevelChanger levelChanger;
+    private GameObject pauseUI;   
     
     public bool gameOver = false;
+    public bool restartLevel = false;
     public bool returnMenu = false;
     public bool isQuit = false;
 
@@ -102,12 +102,19 @@ public class GameController : MonoBehaviour
         inventoryUI.SetActive(false);
         playerController.enabled = false;
     }
-
+        
     public void ReturnMenu()
     {
         Time.timeScale = 1f;
         m_CurrentState = GameState.Playing;
-        returnMenu = true;
+        if (SceneManager.GetActiveScene().name == "Level 2 - Cave")
+        {
+            restartLevel = true;
+        }
+        else
+        {
+            returnMenu = true;
+        }
         levelChanger.FadeToLevel();
     }
 
