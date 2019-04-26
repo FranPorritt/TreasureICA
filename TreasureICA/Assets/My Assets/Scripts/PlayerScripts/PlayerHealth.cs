@@ -12,25 +12,14 @@ public class PlayerHealth : MonoBehaviour {
     public float playerHealth = 100.0f;
 
     [SerializeField]
-    private int enemyDamage = 5;
+    private int enemyDamage = 25;
+    [SerializeField]
+    private int bossDamage = 35;
 
     public bool isDead = false;
 
     // Health Bar UI
     public Image healthHeart;
-
-    //void Awake()
-    //{
-    //    if (player == null)
-    //    {
-    //        DontDestroyOnLoad(gameObject);
-    //        player = this;
-    //    }
-    //    else if (player != this)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 
     private void Start()
     {
@@ -66,6 +55,11 @@ public class PlayerHealth : MonoBehaviour {
     public void takeDamage()
     {
         playerHealth -= enemyDamage;        
+    }
+
+    public void takeDamageBoss()
+    {
+        playerHealth -= bossDamage;
     }
 
     // Stores player data between levels

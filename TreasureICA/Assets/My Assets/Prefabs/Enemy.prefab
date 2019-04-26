@@ -185,8 +185,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325797483687360}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.0603104, y: 0.8025503, z: -12.615055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.6, y: -1.72, z: 37.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4126313772040388}
@@ -355,7 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b7c6f9fa5ba3c498eadcb1f2438d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Boss: {fileID: 0}
   enemyHealth: 100
+  keyDrop: {fileID: 0}
   healthBar: {fileID: 114142678369010926}
 --- !u!114 &114142678369010926
 MonoBehaviour:
@@ -522,7 +524,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6.5
   m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 120

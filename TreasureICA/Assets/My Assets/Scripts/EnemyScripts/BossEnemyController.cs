@@ -142,7 +142,7 @@ public class BossEnemyController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            playerHealth.takeDamage();
+            playerHealth.takeDamageBoss();
         }
     }
 }

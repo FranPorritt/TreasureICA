@@ -107,14 +107,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1f;
         m_CurrentState = GameState.Playing;
-        if (SceneManager.GetActiveScene().name == "Level 2 - Cave")
-        {
-            restartLevel = true;
-        }
-        else
-        {
-            returnMenu = true;
-        }
+        returnMenu = true;
         levelChanger.FadeToLevel();
     }
 
