@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApplePickUp : MonoBehaviour {
+public class ApplePickUp : MonoBehaviour
+{
     [SerializeField]
     private PlayerHealth playerHealth;
 
     private int increaseHealthAmount = 20;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
 	}

@@ -6,13 +6,12 @@ public class Slot : MonoBehaviour
 {
     private Inventory inventory;
     public int i;
-
-	// Use this for initialization
-	void Start ()
-    {
-		inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-    }
 	
+    void Start()
+    {
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+    }
+
 	// Update is called once per frame
 	void Update ()
     {

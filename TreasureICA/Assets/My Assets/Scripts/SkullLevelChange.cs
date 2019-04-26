@@ -32,30 +32,18 @@ public class SkullLevelChange : MonoBehaviour
     {
         if (isSkullActive)
         {
-            if (SceneManager.GetActiveScene().name == "Level 1 - Beach")
-            {
-                if (player.playerHasMap)
-                {
-                    SkullTextPrefab.SetActive(true);
-
-                    if (Input.GetKey(KeyCode.E))
-                    {
-                        levelChanger.FadeToLevel();
-                    }
-                }
-                else
-                {
-                    GetMapText.SetActive(true);
-                }
-            }
-            else
+            if (player.playerHasMap)
             {
                 SkullTextPrefab.SetActive(true);
 
                 if (Input.GetKey(KeyCode.E))
                 {
                     levelChanger.FadeToLevel();
-                } 
+                }
+            }
+            else
+            {
+                GetMapText.SetActive(true);
             }
         }
         else

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
+    public static PlayerHealth player;
+
     // When you load a new level need to get health value
     private float maxHealth = 100.0f;
     public float playerHealth = 100.0f;
@@ -16,6 +18,19 @@ public class PlayerHealth : MonoBehaviour {
 
     // Health Bar UI
     public Image healthHeart;
+
+    //void Awake()
+    //{
+    //    if (player == null)
+    //    {
+    //        DontDestroyOnLoad(gameObject);
+    //        player = this;
+    //    }
+    //    else if (player != this)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     private void Start()
     {

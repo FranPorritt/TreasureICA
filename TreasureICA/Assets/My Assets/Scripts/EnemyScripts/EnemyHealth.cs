@@ -6,12 +6,17 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour {
 
     private EnemyController enemy;
+    [SerializeField]
+    private GameObject Boss;
 
     private float maxHealth = 100.0f;
     [SerializeField]
     public float enemyHealth = 100.0f;
 
     private bool isDead = false;
+
+    [SerializeField]
+    private GameObject keyDrop;
 
     // Health Bar UI
     public Image healthBar;
@@ -52,9 +57,18 @@ public class EnemyHealth : MonoBehaviour {
         enemyHealth -= 25.0f;
         healthBar.fillAmount = enemyHealth / maxHealth;
     }
+    public void TakeDamageBoss()
+    {
+        enemyHealth -= 10.0f;
+        healthBar.fillAmount = enemyHealth / maxHealth;
+    }
 
     void DestroyGameObject()
     {
+        if (this.CompareTag("Boss"))
+        {
+            Instantiate(keyDrop, Boss.transform, false);
+        }
         Destroy(gameObject);
     }
 }

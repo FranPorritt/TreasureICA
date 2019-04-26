@@ -15,6 +15,7 @@ TagManager:
   - PickUp
   - Chest
   - EnemyAttack
+  - Boss
   layers:
   - Default
   - TransparentFX
