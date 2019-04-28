@@ -41,7 +41,6 @@ public class GameController : MonoBehaviour
         m_CurrentState = GameState.Playing;
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         if (playerHealth.isDead)
@@ -49,6 +48,7 @@ public class GameController : MonoBehaviour
             GameOver();
         }
 
+        // Pause Menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (m_CurrentState == GameState.Playing)
@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
             }
         }
 
+        // State machine
         switch (m_CurrentState)
         {
             case GameState.Playing:

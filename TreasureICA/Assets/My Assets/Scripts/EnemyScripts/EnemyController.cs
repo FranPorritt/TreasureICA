@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
             KnockBack();
         }
 
-        if (distance < 30.0f)
+        if (distance < 20.0f)
         {
             m_CurrentState = State.Chasing;
         }
