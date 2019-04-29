@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField]
     private GameController game;
+    [SerializeField]
+    private BarrelHide barrel;
 
     public float distance;
     private float m_MapExtentX = 100.0f;
@@ -60,7 +62,12 @@ public class EnemyController : MonoBehaviour
             KnockBack();
         }
 
-        if (distance < 20.0f)
+        if(barrel.isPlayerHidden)
+        {
+            m_CurrentState = State.Wandering;
+        }
+
+        if ((distance < 20.0f) && (!barrel.isPlayerHidden))
         {
             m_CurrentState = State.Chasing;
         }
