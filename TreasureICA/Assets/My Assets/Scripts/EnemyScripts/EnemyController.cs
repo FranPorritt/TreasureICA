@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Transform Player;
     [SerializeField]
+    private PlayerController playerController;
+    [SerializeField]
     private PlayerHealth playerHealth;
     [SerializeField]
     private GameController game;
@@ -62,12 +64,12 @@ public class EnemyController : MonoBehaviour
             KnockBack();
         }
 
-        if(barrel.isPlayerHidden)
+        if(playerController.isPlayerHidden)
         {
             m_CurrentState = State.Wandering;
         }
 
-        if ((distance < 20.0f) && (!barrel.isPlayerHidden))
+        if ((distance < 20.0f) && (!playerController.isPlayerHidden))
         {
             m_CurrentState = State.Chasing;
         }
@@ -145,7 +147,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {

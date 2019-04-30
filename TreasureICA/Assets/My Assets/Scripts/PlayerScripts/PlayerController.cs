@@ -53,9 +53,10 @@ public class PlayerController : MonoBehaviour
     private Lever lever;
     public bool atLever = false;
 
-    // Map + Key Pick Up
+    // Pick Ups
     public bool playerHasKey = false;
     public bool playerHasMap = false;
+    public bool isPlayerHidden = false;
 
     void Start()
     { 
