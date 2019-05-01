@@ -384,7 +384,12 @@ Prefab:
     - target: {fileID: 114796194150885970, guid: c6d9df69d3f44044c8b024659a31b9ec,
         type: 2}
       propertyPath: enemyDamage
-      value: 15
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796194150885970, guid: c6d9df69d3f44044c8b024659a31b9ec,
+        type: 2}
+      propertyPath: bossDamage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6d9df69d3f44044c8b024659a31b9ec, type: 2}
@@ -791,6 +796,11 @@ Prefab:
       propertyPath: game
       value: 
       objectReference: {fileID: 1753462633}
+    - target: {fileID: 114958660441890444, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 86056624}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5, type: 2}
   m_IsPrefabParent: 0
@@ -1046,6 +1056,11 @@ Prefab:
       propertyPath: game
       value: 
       objectReference: {fileID: 1753462633}
+    - target: {fileID: 114958660441890444, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 86056624}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5, type: 2}
   m_IsPrefabParent: 0
@@ -1847,6 +1862,11 @@ Prefab:
       propertyPath: game
       value: 
       objectReference: {fileID: 1753462633}
+    - target: {fileID: 114958660441890444, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 86056624}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5, type: 2}
   m_IsPrefabParent: 0
@@ -2252,6 +2272,11 @@ Prefab:
       propertyPath: game
       value: 
       objectReference: {fileID: 1753462633}
+    - target: {fileID: 114958660441890444, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5,
+        type: 2}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 86056624}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ae8a7d3cba83f43b85cdd96dccfcc5, type: 2}
   m_IsPrefabParent: 0

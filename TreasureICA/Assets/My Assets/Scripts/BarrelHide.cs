@@ -5,10 +5,11 @@ using UnityEngine;
 public class BarrelHide : MonoBehaviour
 {
     private bool isBarrelActive = false;
-    public bool isPlayerHidden = false;
 
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private PlayerController playerController;
     [SerializeField]
     private GameObject interactText;
 
@@ -26,11 +27,11 @@ public class BarrelHide : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                isPlayerHidden = !isPlayerHidden;
+                playerController.isPlayerHidden = !playerController.isPlayerHidden;
             }
         }
 
-        if(isPlayerHidden)
+        if(playerController.isPlayerHidden)
         {
             player.SetActive(false);
         }

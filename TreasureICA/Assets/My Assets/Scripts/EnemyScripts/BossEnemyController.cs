@@ -138,7 +138,7 @@ public class BossEnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {

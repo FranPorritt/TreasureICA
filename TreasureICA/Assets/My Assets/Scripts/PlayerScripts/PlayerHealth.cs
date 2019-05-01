@@ -12,9 +12,9 @@ public class PlayerHealth : MonoBehaviour {
     public float playerHealth = 100.0f;
 
     [SerializeField]
-    private int enemyDamage = 25;
+    private int enemyDamage = 1;
     [SerializeField]
-    private int bossDamage = 35;
+    private int bossDamage = 5;
 
     public bool isDead = false;
 
