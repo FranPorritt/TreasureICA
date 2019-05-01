@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
@@ -34,8 +35,8 @@ public class PlayerHealth : MonoBehaviour {
 
     private void Start()
     {
-       //playerHealth = PlayerPrefs.GetFloat("Health", 100); // COMMENTED OUT WHILE TESTING -- ENABLE IT FOR PLAY
-       if (playerHealth <= 0)
+       playerHealth = PlayerPrefs.GetFloat("Health", 100); // COMMENTED OUT WHILE TESTING -- ENABLE IT FOR PLAY
+       if (playerHealth <= 0 || SceneManager.GetActiveScene().name == "Level 1 - Beach")
         {
             playerHealth = 100; // If died and restarted
         }
