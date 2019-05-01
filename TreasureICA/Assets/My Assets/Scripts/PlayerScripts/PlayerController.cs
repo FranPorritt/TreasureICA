@@ -58,18 +58,32 @@ public class PlayerController : MonoBehaviour
     public bool playerHasMap = false;
     public bool isPlayerHidden = false;
 
+    // Sound
+    [SerializeField]
+    private AudioClip playerSwing;
+    [SerializeField]
+    private AudioClip pickUpSound;
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private CutScene cutscene;
+
     void Start()
-    { 
+    {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         rigidBody = GetComponent<Rigidbody>();
         Lantern.SetActive(false);
         currentState = State.Idle;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (cutscene == null || !cutscene.isCutscene)
+        {
+            Movement();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -106,6 +120,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isAttacking", true);
             animator.Play("playerSword");
             animator.SetBool("isAttacking", false);
+
+            audioSource.PlayOneShot(playerSwing);
         }
         else
         {
@@ -207,6 +223,11 @@ public class PlayerController : MonoBehaviour
     {        
         lantern.isPickedUp = true;
         Lantern.SetActive(true);
+    }
+
+    public void PickUpSound()
+    {
+        audioSource.PlayOneShot(pickUpSound);
     }
 
     public Vector3 GetMovement()

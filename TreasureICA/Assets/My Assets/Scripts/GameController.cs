@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -20,6 +21,14 @@ public class GameController : MonoBehaviour
     private CameraController cameraController;
     [SerializeField]
     private LevelChanger levelChanger;
+    [SerializeField]
+    private CutScene cutscene;
+    [SerializeField]
+    private TreasureChest treasure;
+    [SerializeField]
+    private GameObject endGame;
+    [SerializeField]
+    private PlayableDirector endCutScene;
 
     [SerializeField]
     private GameObject gameOverUI;
@@ -32,12 +41,14 @@ public class GameController : MonoBehaviour
     public bool restartLevel = false;
     public bool returnMenu = false;
     public bool isQuit = false;
+    private bool endingGame = false;
 
     void Start()
     {
         gameOverUI.SetActive(false);
         inventoryUI.SetActive(true);
         pauseUI.SetActive(false);
+        endGame.SetActive(false);
         m_CurrentState = GameState.Playing;
     }
 	
@@ -80,6 +91,18 @@ public class GameController : MonoBehaviour
                     break;
                 }
         }
+
+        if(treasure.gameEnd)
+        {
+            if (!endingGame)
+            {
+                EndGame();
+            }
+            else if (endCutScene.state != PlayState.Playing)
+            {
+                levelChanger.FadeToLevel();
+            }
+        }
 	}
 
     public void Pause()
@@ -118,5 +141,12 @@ public class GameController : MonoBehaviour
         m_CurrentState = GameState.Playing;
         isQuit = true;
         levelChanger.FadeToLevel();
+    }
+
+    private void EndGame()
+    {
+        endingGame = true;
+        endGame.SetActive(true);
+        endCutScene.Play();
     }
 }

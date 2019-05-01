@@ -21,10 +21,16 @@ public class EnemyHealth : MonoBehaviour {
     // Health Bar UI
     public Image healthBar;
 
+    // Sound
+    [SerializeField]
+    private AudioClip enemyHit;
+    private AudioSource audioSource;
+
     private void Start()
     {
         enemy = GetComponent<EnemyController>();
         healthBar.enabled = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +39,11 @@ public class EnemyHealth : MonoBehaviour {
         if (enemyHealth <= 0)
         {
             isDead = true;
+        }
+
+        if (this.CompareTag("Boss"))
+        {
+            healthBar.enabled = true;
         }
 
         if (isDead)
@@ -52,15 +63,15 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage()
     {
-        // ADD DIFFERENT AMOUNTS FOR DIFFERENT WEAPONS
-
         enemyHealth -= 25.0f;
         healthBar.fillAmount = enemyHealth / maxHealth;
+        audioSource.PlayOneShot(enemyHit);
     }
     public void TakeDamageBoss()
     {
         enemyHealth -= 10.0f;
         healthBar.fillAmount = enemyHealth / maxHealth;
+        audioSource.PlayOneShot(enemyHit);
     }
 
     void DestroyGameObject()

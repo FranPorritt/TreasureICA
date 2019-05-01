@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3 - Treasure Cave.unity
     guid: 6fa388203f26d9b4381bccf85d88fc90
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: f4c8a842d19e8a64a92e6083fcce25b5

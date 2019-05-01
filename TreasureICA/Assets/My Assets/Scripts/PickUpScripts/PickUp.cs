@@ -13,9 +13,18 @@ public class PickUp : MonoBehaviour
 
     private bool isColliding = false;
 
+    // Sound
+    [SerializeField]
+    private PlayerController player;
+
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        if(player == null) // For key spawn
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        }
+
         PickUpTextPrefab.SetActive(false);
     }
 
@@ -36,6 +45,7 @@ public class PickUp : MonoBehaviour
                     {
                         inventory.isFull[inventoryIndex] = true;
                         Instantiate(itemButton, inventory.inventorySlots[inventoryIndex].transform, false);
+                        player.PickUpSound();
                         Destroy(gameObject);
                         break;
                     }

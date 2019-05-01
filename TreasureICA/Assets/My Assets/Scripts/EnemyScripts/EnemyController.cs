@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private GameController game;
     [SerializeField]
-    private BarrelHide barrel;
+    private CutScene cutscene;
 
     public float distance;
     private float m_MapExtentX = 100.0f;
@@ -50,7 +51,19 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if(game.gameOver)
+        if (SceneManager.GetActiveScene().name == "Level 3 - Treasure Cave")
+        {
+            if (cutscene.isCutscene)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+            }
+        }
+
+        if (game.gameOver)
         {
             m_CurrentState = State.Wandering;
         }
@@ -69,7 +82,7 @@ public class EnemyController : MonoBehaviour
             m_CurrentState = State.Wandering;
         }
 
-        if ((distance < 20.0f) && (!playerController.isPlayerHidden))
+        if ((distance < 20.0f) && (!playerController.isPlayerHidden) && (cutscene == null || !cutscene.isCutscene)) // Prevents enemies attacking player when hidden and during cutscene
         {
             m_CurrentState = State.Chasing;
         }

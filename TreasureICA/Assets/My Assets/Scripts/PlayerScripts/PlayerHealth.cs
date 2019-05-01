@@ -20,6 +20,17 @@ public class PlayerHealth : MonoBehaviour {
 
     // Health Bar UI
     public Image healthHeart;
+    [SerializeField]
+    private GameObject heart;
+
+    // Sound
+    [SerializeField]
+    private AudioClip playerDamage;
+    private AudioSource audioSource;
+    private bool isSoundPlaying = false;
+
+    [SerializeField]
+    private CutScene cutscene;
 
     private void Start()
     {
@@ -28,10 +39,20 @@ public class PlayerHealth : MonoBehaviour {
         {
             playerHealth = 100; // If died and restarted
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        if (cutscene != null && cutscene.isCutscene)
+        {
+            heart.SetActive(false);
+        }
+        else if (cutscene == null || !cutscene.isCutscene)
+            {
+            heart.SetActive(true);
+        }
+
         healthHeart.fillAmount = playerHealth / maxHealth;
 
         if (playerHealth <= 0)
@@ -54,12 +75,26 @@ public class PlayerHealth : MonoBehaviour {
 
     public void takeDamage()
     {
-        playerHealth -= enemyDamage;        
+        playerHealth -= enemyDamage;
+        if (!isDead)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(playerDamage);
+            }
+        }
     }
 
     public void takeDamageBoss()
     {
         playerHealth -= bossDamage;
+        if (!isDead)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(playerDamage);
+            }
+        }
     }
 
     // Stores player data between levels

@@ -12,12 +12,15 @@ public class BarrelHide : MonoBehaviour
     private PlayerController playerController;
     [SerializeField]
     private GameObject interactText;
+    
+    private AudioSource audioSource;
 
     // Use this for initialization
     void Start ()
     {
         player.SetActive(true);
         interactText.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -28,6 +31,7 @@ public class BarrelHide : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 playerController.isPlayerHidden = !playerController.isPlayerHidden;
+                audioSource.Play();
             }
         }
 

@@ -23,7 +23,7 @@ public class LevelChanger : MonoBehaviour {
 
     public void OnFadeComplete()
     {
-        if((SceneManager.GetActiveScene().name == "Level 3 - Treasure Cave") || (game.returnMenu))
+        if((SceneManager.GetActiveScene().name == "EndGame") || (game.returnMenu))
         {
             SceneManager.LoadScene("Main Menu");
         }

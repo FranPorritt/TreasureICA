@@ -14,6 +14,7 @@ public class SkullLevelChange : MonoBehaviour
     [SerializeField]
     private CameraController playerCamera;
 
+    // Text
     [SerializeField]
     private GameObject SkullTextPrefab;
     [SerializeField]
@@ -28,6 +29,11 @@ public class SkullLevelChange : MonoBehaviour
     private PlayerController player;
     private bool isTextActive = false;
 
+    // Sound
+    [SerializeField]
+    private AudioClip skullSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -37,6 +43,7 @@ public class SkullLevelChange : MonoBehaviour
         playerCamera.enabled = true;
         skullCanvas.SetActive(false);
         inventoryCanvas.SetActive(true);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +79,7 @@ public class SkullLevelChange : MonoBehaviour
         playerCamera.enabled = false;
         skullCanvas.SetActive(true);
         inventoryCanvas.SetActive(false);
+        audioSource.PlayOneShot(skullSound);
         Time.timeScale = 0;
     }
 
@@ -88,10 +96,12 @@ public class SkullLevelChange : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isSkullActive = true;
-
-            // Camera Effect
-            SkullCameraControl();
+            if(!isSkullActive)
+            {
+                // Camera Effect
+                SkullCameraControl();
+                isSkullActive = true;
+            }                     
         }
     }
 

@@ -16,13 +16,26 @@ public class TreasureChest : MonoBehaviour
     [SerializeField]
     private GameObject keyText;
 
+    // Sound
+    [SerializeField]
+    private AudioClip openingSound;
+    private AudioSource audioSource;
+    private GameObject music;
+    [SerializeField]
+    private GameObject endMusic;
+
     [SerializeField]
     private LevelChanger levelChanger;
+
+    public bool gameEnd = false;
 
     void Start()
     {
         openText.SetActive(false);
         keyText.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        music = GameObject.FindGameObjectWithTag("Music");
+        endMusic.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,8 +45,11 @@ public class TreasureChest : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                gameEnd = true;
+                Destroy(music);
+                audioSource.PlayOneShot(openingSound);
+                endMusic.SetActive(true);
                 animator.SetTrigger("OpenChest");
-                levelChanger.FadeToLevel();
             }
         }
 	}

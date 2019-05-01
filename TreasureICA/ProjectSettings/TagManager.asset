@@ -16,6 +16,8 @@ TagManager:
   - Chest
   - EnemyAttack
   - Boss
+  - Music
+  - EndMusic
   layers:
   - Default
   - TransparentFX
