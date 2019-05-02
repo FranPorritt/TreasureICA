@@ -48,11 +48,14 @@ public class GameController : MonoBehaviour
         gameOverUI.SetActive(false);
         inventoryUI.SetActive(true);
         pauseUI.SetActive(false);
-        endGame.SetActive(false);
+        if (endGame != null)
+        {
+            endGame.SetActive(false);
+        }
         m_CurrentState = GameState.Playing;
     }
-	
-	void Update ()
+
+    private void Update ()
     {
         if (playerHealth.isDead)
         {
@@ -92,7 +95,7 @@ public class GameController : MonoBehaviour
                 }
         }
 
-        if(treasure.gameEnd)
+        if(treasure != null && treasure.gameEnd)
         {
             if (!endingGame)
             {
